@@ -1,0 +1,18 @@
+@function px2rem($px, $base-font-size: 108px) {
+    @if (unitless($px)) {
+        @warn "Assuming #{$px} to be in pixels, attempting to convert it into pixels for you";
+        @return px2rem($px + 0px); // That may fail.
+    } @else if (unit($px) == em) {
+        @return $px;
+    }
+    @return ($px / $base-font-size) * 1rem;
+}
+
+@mixin input-padding {
+    padding-left: px2rem(10px);
+    border: 1px solid #3a1f1f;
+    outline: none;
+    background-color: #ececec;
+    border-radius: px2rem(5px);
+    box-sizing: border-box;
+}
