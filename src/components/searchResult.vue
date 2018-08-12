@@ -23,7 +23,7 @@ export default {
     function test0002{
         return '不要删除'
     function test () {
-      var z= '一个函数'
+      var z= '一个函数sssssssssssss'
       return z
     }
   },
