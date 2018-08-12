@@ -19,7 +19,9 @@ export default {
   },
   props: ['searchInfo'],
   beforeCreate: function () {
-    console.log('11')
+    function test02(){
+        return 'test02'
+    }
   },
   created: function () {
 
