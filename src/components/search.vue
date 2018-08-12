@@ -11,7 +11,7 @@
     </div>
     <template>
         <hot v-if="hotShow"></hot>
-        <search-result v-else-if="resultShow" :search-info="{resultShow, key}"></search-result>
+        <search-result v-else-if="resultShow" :search-info="key"></search-result>
     </template>
 </div>
 </template>
@@ -44,6 +44,7 @@ export default {
       this.cancel = false
       this.key = ''
       this.hotShow = false
+      this.resultShow = false
     },
     searchSubmit: function (key) {
       if (key.trim() === '') {
