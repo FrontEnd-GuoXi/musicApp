@@ -19,8 +19,10 @@ export default {
   },
   props: ['searchInfo'],
   beforeCreate: function () {
-    function test02(){
-        return 'test02'
+    console.log('11')
+    function test () {
+      var z= '一个函数'
+      return z
     }
   },
   created: function () {
