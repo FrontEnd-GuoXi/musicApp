@@ -24,10 +24,6 @@ export default {
       var z= '一个函数'
       return z
     }
-    function test02 () {
-      var a = 'z'
-      return a
-    }
   },
   created: function () {
 
