@@ -20,10 +20,6 @@ export default {
   props: ['searchInfo'],
   beforeCreate: function () {
     console.log('11')
-    function test () {
-      var z= '一个函数'
-      return z
-    }
   },
   created: function () {
 
