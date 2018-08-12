@@ -21,7 +21,7 @@ export default {
   beforeCreate: function () {
     console.log('11')
     function test () {
-      var z= '一个函数'
+      var z= '一个函'
       return z
     }
   },
