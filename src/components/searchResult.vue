@@ -22,9 +22,6 @@ export default {
     console.log('11')
     function test0002{
         return '不要删除'
-    function test () {
-      var z= '一个函'
-      return z
     }
   },
   created: function () {
