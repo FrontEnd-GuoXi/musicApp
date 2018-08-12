@@ -47,6 +47,7 @@ export default {
 
 .recommend-list{
     padding: 0 px2rem(20px);
+    @include font-dpr(14px);
 
     &>li{
       display: flex;

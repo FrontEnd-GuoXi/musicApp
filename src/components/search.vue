@@ -3,41 +3,44 @@
     <div id="search">
       <form ref="searchForm" class="search-wrap">
           <input type="text" name="sreach" class="input-search" autocomplete="off"
-                 placeholder="搜索 歌曲/专辑/歌手" @focus="cancelMethod" v-model="key"/>
+                 placeholder="搜索 歌曲/专辑/歌手" @focus="prepareSearch" v-model="key"/>
       </form>
-      <div class="cancel-wrap" :class="{ 'cancel-show':cancel }" @click="hideMethod">
+      <div class="cancel-wrap" :class="{ 'cancel-show':cancel }" @click="cancelSearch">
           <span>取消</span>
       </div>
     </div>
     <template>
         <hot v-if="hotShow"></hot>
+        <search-result v-else-if="resultShow" :search-info="{resultShow, key}"></search-result>
     </template>
 </div>
 </template>
 
 <script type="text/ecmascript-6">
 import hot from './hot.vue'
+import searchResult from './searchResult.vue'
 
 export default {
   name: 'search',
-  components: {hot},
+  components: {hot, searchResult},
   data: () => {
     return {
       key: '',
       cancel: false,
       hotShow: false,
+      resultShow: false,
       searchData: null,
       searchHistory: []
     }
   },
   methods: {
-    cancelMethod: function () {
+    prepareSearch: function () {
       this.cancel = true
       if (this.key.trim() === '') {
         this.hotShow = true
       }
     },
-    hideMethod: function () {
+    cancelSearch: function () {
       this.cancel = false
       this.key = ''
       this.hotShow = false
@@ -51,10 +54,7 @@ export default {
       } else {
         this.hotShow = false
       }
-      this.$store.dispatch('search', key).then((Response) => {
-        console.log(Response.body.data)
-        this.searchData = Response.body.data
-      })
+      this.resultShow = true
     }
   },
   watch: {
@@ -80,6 +80,7 @@ $s-width:100%;
    overflow: hidden;
    box-sizing: border-box;
    padding: px2rem(20px);
+   @include font-dpr(14px);
 }
 .search-wrap{
   width: $s-width;
@@ -89,6 +90,7 @@ $s-width:100%;
   width: $s-width;
   height: $s-height;
   @include input-padding;
+  cursor: pointer;
 }
 .cancel-wrap{
   height: 100%;
